@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — UNDER PRESSION</title>
+
+  <style>
+    body {
+      background: #0d0d0d;
+      color: #fff;
+      margin: 0;
+      padding-top: 90px;
+      font-family: Arial, sans-serif;
+    }
+
+    /* NAVBAR */
+    header {
+      width: 100%;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #222;
+      z-index: 1000;
+    }
+
+    header .logo {
+      color: white;
+      font-size: 26px;
+      font-weight: 900;
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+
+    nav a {
+      margin-left: 25px;
+      color: #bbb;
+      text-decoration: none;
+      font-size: 15px;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    .checkout-container {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .section-box {
+      background: #111;
+      padding: 25px;
+      border-radius: 8px;
+      border: 1px solid #222;
+    }
+
+    .section-box h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #333;
+      background: #0f0f0f;
+      color: white;
+    }
+
+    textarea {
+      height: 120px;
+      resize: none;
+    }
+
+    .summary-item {
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #222;
+    }
+
+    .summary-item p {
+      margin: 5px 0;
+    }
+
+    .total {
+      font-size: 22px;
+      font-weight: 700;
+      margin-top: 20px;
+      text-align: right;
+    }
+
+    .place-order {
+      width: 100%;
+      padding: 15px;
+      background: white;
+      color: black;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 6px;
+      margin-top: 25px;
+      cursor: pointer;
+      border: none;
+    }
+
+    .place-order:hover {
+      background: #e4e4e4;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a class="logo" href="index.html">UNDER PRESSION</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="cart.html">Cart</a>
+  </nav>
+</header>
+
+
+<div class="checkout-container">
+
+  <!-- LEFT SIDE: FORM -->
+  <div class="section-box">
+    <h2>Shipping Info</h2>
+
+    <input id="name" type="text" placeholder="Full Name">
+    <input id="phone" type="text" placeholder="Phone / WhatsApp">
+    <textarea id="address" placeholder="Complete Address"></textarea>
+
+    <button class="place-order" onclick="placeOrder()">Place Order</button>
+  </div>
+
+  <!-- RIGHT SIDE: SUMMARY -->
+  <div class="section-box">
+    <h2>Order Summary</h2>
+
+    <div id="summary"></div>
+
+    <div class="total">
+      Total: <span id="totalPrice">Rp 0</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  function loadSummary() {
+    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    let sumBox = document.getElementById("summary");
+    let total = 0;
+
+    if (cart.length === 0) {
+      sumBox.innerHTML = "<p style='color:#aaa'>Cart kosong bro 😭</p>";
+      return;
+    }
+
+    sumBox.innerHTML = "";
+
+    cart.forEach(item => {
+      total += item.price;
+
+      sumBox.innerHTML += `
+        <div class="summary-item">
+          <p><strong>${item.name}</strong></p>
+          <p>Size: ${item.size}</p>
+          <p>Rp ${item.price.toLocaleString()}</p>
+        </div>
+      `;
+    });
+
+    document.getElementById("totalPrice").textContent = "Rp " + total.toLocaleString();
+  }
+
+  function placeOrder() {
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let address = document.getElementById("address").value;
+
+    if (!name || !phone || !address) {
+      alert("Lengkapi datanya dulu bro 😑");
+      return;
+    }
+
+    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+    let message = `ORDER - UNDER PRESSION%0A%0A` +
+      `Name: ${name}%0A` +
+      `Phone: ${phone}%0A` +
+      `Address: ${address}%0A%0A` +
+      `Items:%0A`;
+
+    cart.forEach(i => {
+      message += `- ${i.name} (Size: ${i.size}) - Rp ${i.price.toLocaleString()}%0A`;
+    });
+
+    message += `%0ATotal: ${document.getElementById("totalPrice").textContent}`;
+
+    // MASUKIN NOMOR WA LO DISINI (format 62)
+    let admin = "62XXXXXXXXXX";
+
+    window.location.href = `https://wa.me/${admin}?text=${message}`;
+  }
+
+  loadSummary();
+</script>
+
+</body>
+</html>

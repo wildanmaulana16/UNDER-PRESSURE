@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UP Aero Puffer Jacket</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0d0d0d;
+      color: #fff;
+      padding-top: 90px;
+    }
+
+    /* NAVBAR */
+    header {
+      width: 100%;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #222;
+      z-index: 9999;
+    }
+
+    header .logo {
+      color: #fff;
+      font-size: 26px;
+      font-weight: 900;
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    nav a {
+      color: #bbb;
+      text-decoration: none;
+      font-size: 15px;
+      transition: .2s;
+    }
+
+    nav a:hover {
+      color: #bbb;
+    }
+
+    /* PAGE LAYOUT */
+    .product-page {
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px;
+      display: flex;
+      gap: 40px;
+    }
+
+    /* SLIDER */
+    .slider-box {
+      width: 50%;
+      overflow: hidden;
+      border-radius: 10px;
+      border: 1px solid #222;
+    }
+
+    .slider-imgs {
+      display: flex;
+      transition: transform 0.35s ease;
+    }
+
+    .slider-imgs img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .slider-btns {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .slider-btns button {
+      padding: 8px 14px;
+      background: #222;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    /* INFO */
+    .info {
+      width: 50%;
+    }
+
+    .info h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 22px;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    .sizes button {
+      padding: 10px 18px;
+      background: #222;
+      color: #fff;
+      border-radius: 4px;
+      border: 1px solid #333;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .sizes button.active {
+      background: #fff;
+      color: #000;
+    }
+
+    #addCart {
+      margin-top: 30px;
+      padding: 15px 35px;
+      background: #fff;
+      color: #000;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 40px;
+      color: #777;
+      text-align: center;
+    }
+
+    /* POPUP */
+    #popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(4px);
+      justify-content: center;
+      align-items: center;
+      z-index: 20000;
+    }
+
+    #popup-box {
+      background: #111;
+      padding: 30px 40px;
+      border-radius: 10px;
+      border: 1px solid #333;
+      width: 300px;
+      text-align: center;
+    }
+
+    #popup-box button {
+      padding: 10px 18px;
+      background: #fff;
+      color: #000;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .size-label {
+    margin-bottom: 10px; /* jarak antara tulisan dan pilihan size */
+    display: block;
+}
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a class="logo" href="index.html">UNDER PRESSION</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="cart.html">Cart</a>
+  </nav>
+</header>
+
+<section class="product-page">
+
+  <!-- SLIDER -->
+  <div class="slider-box">
+    <div class="slider-imgs" id="sliderImgs">
+      <img src="Frame 1.jpg">
+      <img src="Corteiz Men's Jacket.jpeg">
+      <img src="download (19).jpeg">
+    </div>
+
+    <div class="slider-btns">
+      <button onclick="slide(-1)">‹</button>
+      <button onclick="slide(1)">›</button>
+    </div>
+  </div>
+
+  <!-- INFO -->
+  <div class="info">
+    <h2>UP Aero Puffer Jacket</h2>
+    <p class="price">Rp 885.000</p>
+
+    <label class="size-label">Select Size</label>
+    <div class="sizes">
+      <button onclick="selectSize(this)">S</button>
+      <button onclick="selectSize(this)">M</button>
+      <button onclick="selectSize(this)">L</button>
+      <button onclick="selectSize(this)">XL</button>
+    </div>
+
+    <button id="addCart">Add to Cart</button>
+  </div>
+
+</section>
+
+<footer>
+  © 2025 UNDER PRESSURE.
+</footer>
+
+<!-- POPUP -->
+<div id="popup">
+  <div id="popup-box">
+    <h3 style="margin-bottom: 10px;">Added to Cart</h3>
+    <p style="color:#bbb;">Produk masuk cart bro 🔥</p>
+    <button onclick="closePopup()">OK</button>
+  </div>
+</div>
+
+<script>
+  /* SLIDER */
+  let slideIndex = 0;
+  function slide(move) {
+    const slider = document.getElementById("sliderImgs");
+    const total = slider.children.length;
+
+    slideIndex += move;
+    if (slideIndex < 0) slideIndex = total - 1;
+    if (slideIndex >= total) slideIndex = 0;
+
+    slider.style.transform = `translateX(-${slideIndex * 100}%)`;
+  }
+
+  /* SIZE SELECT */
+  let selectedSize = null;
+  function selectSize(btn) {
+    document.querySelectorAll(".sizes button").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    selectedSize = btn.textContent;
+  }
+
+  /* POPUP */
+  function showPopup() {
+    document.getElementById("popup").style.display = "flex";
+  }
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+
+  /* ADD TO CART */
+  document.getElementById("addCart").onclick = function() {
+    if (!selectedSize) return alert("Pilih ukuran dulu bro 😑");
+
+    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+    cart.push({
+      name: "UP Aero Puffer Jacket",
+      price: 885000,
+      size: selectedSize,
+      img: "Frame 1.jpg"
+    });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    showPopup();
+  };
+</script>
+
+</body>
+</html>

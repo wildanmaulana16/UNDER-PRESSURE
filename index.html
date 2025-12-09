@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UNDER PRESSION — Streetwear Brand</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0d0d0d;
+      color: #fff;
+    }
+
+    header {
+      width: 100%;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #222;
+    }
+
+    header h1 {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    nav a {
+      margin-left: 25px;
+      color: #bbb;
+      text-decoration: none;
+      font-size: 15px;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: url('header1.png') center/cover;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.55);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-content h2 {
+      font-size: 60px;
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      padding: 14px 32px;
+      background: #fff;
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 4px;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      background: #d7d7d7;
+    }
+
+    .section {
+      padding: 100px 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section h3 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .product-card {
+      background: #111;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #222;
+      text-align: center;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 250px;        /* semua foto jadi sama tinggi */
+      object-fit: cover;    /* auto crop biar landscape rapi */
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      margin-top: 60px;
+      border-top: 1px solid #222;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>UNDER PRESSURE</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h2>UNDER PRESSURE</h2>
+      <p>FEEL THE PRESSURE</p>
+      <a href="shop.html" class="btn">Shop Now</a>
+    </div>
+  </section>
+
+  <section class="section" id="products">
+    <h3>Our Drops</h3>
+    <div class="products">
+      <div class="product-card">
+        <img src="gelembung.jpg" />
+        <h4>?</h4>
+        <p>STAY TUNED!!!</p>
+      </div>
+
+      <div class="product-card">
+        <img src="topi.jpg" />
+        <h4>?</h4>
+        <p>STAY TUNED!!!</p>
+      </div>
+
+      <div class="product-card">
+        <img src="airmax1.jpg" />
+        <h4>?</h4>
+        <p>STAY TUNED!!!</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <h3>About UNDER PRESSURE</h3>
+    <p>
+      Grown With Pressure
+    </p>
+  </section>
+
+  <footer>
+    © 2025 UNDER PRESSURE Streetwear. All Rights Reserved.
+  </footer>
+</body>
+</html>
