@@ -99,6 +99,53 @@
   letter-spacing: 2px;
 }
 
+/* RESPONSIVE SHOP PAGE */
+@media (max-width: 600px) {
+
+  header {
+    padding: 15px 20px;
+  }
+
+  nav a {
+    margin-left: 12px;
+    font-size: 14px;
+  }
+
+  /* Judul Shop */
+  h2, h1, .title {
+    font-size: 28px !important;
+    text-align: center !important;
+  }
+
+  /* GRID PRODUK, BIKIN 2 KOLOM */
+  .products {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 18px !important;
+    padding: 0 10px;
+  }
+
+  .product-card {
+    padding: 15px !important;
+  }
+
+  .product-card img {
+    height: 140px !important;
+    object-fit: cover;
+  }
+
+  .product-card h4 {
+    font-size: 14px !important;
+  }
+
+  .product-card p {
+    font-size: 13px !important;
+  }
+
+  footer {
+    font-size: 12px;
+    padding: 25px 10px;
+  }
+}
 
   </style>
 </head>
