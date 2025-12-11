@@ -190,50 +190,75 @@
     display: block;
 }
 
-/* ==== MOBILE ONLY (SHOES) ==== */
-@media (max-width: 480px) {
+/* === RESPONSIVE PRODUCT PAGE (HP) === */
+@media (max-width: 600px) {
 
-    .shoes-container {
-        max-width: 350px;
-        padding: 15px;
-    }
+  body {
+    padding-top: 70px;
+  }
 
-    .shoes-title {
-        font-size: 20px;
-        margin-top: 10px;
-    }
+  header {
+    padding: 15px 20px;
+  }
 
-    .shoes-price {
-        font-size: 16px;
-    }
+  nav a {
+    margin-left: 12px;
+    font-size: 14px;
+  }
 
-    .shoes-image {
-        width: 100%;
-        border-radius: 8px;
-    }
+  .product-page {
+    flex-direction: column;
+    padding: 20px;
+    gap: 25px;
+  }
 
-    .shoes-size-section h3 {
-        font-size: 16px;
-        margin-bottom: 6px;
-    }
+  /* Slider jadi full width */
+  .slider-box {
+    width: 100% !important;
+  }
 
-    .shoes-size-options {
-        gap: 8px;
-    }
+  .slider-imgs img {
+    height: 330px !important;
+  }
 
-    .shoes-size-btn {
-        padding: 8px 16px;
-        font-size: 14px;
-        border-radius: 6px;
-    }
+  /* Info produk */
+  .info {
+    width: 100% !important;
+  }
 
-    .add-cart-shoes {
-        padding: 12px;
-        font-size: 16px;
-        border-radius: 8px;
-    }
+  .info h2 {
+    font-size: 24px !important;
+  }
+
+  .price {
+    font-size: 18px !important;
+  }
+
+  /* Select Size */
+  .sizes {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+  }
+
+  .sizes button {
+    padding: 8px 14px !important;
+    font-size: 14px !important;
+  }
+
+  /* Add to cart */
+  #addCart {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+
+  footer {
+    padding: 25px;
+    font-size: 12px;
+  }
 }
-
   </style>
 </head>
 

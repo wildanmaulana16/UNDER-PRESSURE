@@ -99,53 +99,79 @@
   letter-spacing: 2px;
 }
 
-/* RESPONSIVE SHOP PAGE */
+/* container */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* product card */
+.product {
+  text-decoration: none;
+  color: #000;
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: 0.2s;
+}
+
+.product:hover {
+  transform: scale(1.03);
+}
+
+/* image */
+.product img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* product text */
+.product h3 {
+  margin: 10px 0 5px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.product p {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* === HP ONLY === */
 @media (max-width: 600px) {
-
-  header {
-    padding: 15px 20px;
-  }
-
-  nav a {
-    margin-left: 12px;
-    font-size: 14px;
-  }
-
-  /* Judul Shop */
-  h2, h1, .title {
-    font-size: 28px !important;
-    text-align: center !important;
-  }
-
-  /* GRID PRODUK, BIKIN 2 KOLOM */
   .products {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 18px !important;
-    padding: 0 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 kolom kecil */
+    gap: 15px;
+    padding: 15px;
   }
 
-  .product-card {
-    padding: 15px !important;
+  .product {
+    padding: 10px;
+    border-radius: 10px;
   }
 
-  .product-card img {
-    height: 140px !important;
+  .product img {
+    height: 130px;    /* kecil biar ga nutup layar */
     object-fit: cover;
+    border-radius: 8px;
   }
 
-  .product-card h4 {
-    font-size: 14px !important;
+  .product h3 {
+    font-size: 13px;
+    margin: 6px 0 3px;
   }
 
-  .product-card p {
-    font-size: 13px !important;
-  }
-
-  footer {
+  .product p {
     font-size: 12px;
-    padding: 25px 10px;
   }
 }
+
 
   </style>
 </head>

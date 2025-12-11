@@ -121,67 +121,82 @@
       background: #e4e4e4;
     }
 
-    /* ==== MOBILE ONLY (CHECKOUT) ==== */
-@media (max-width: 480px) {
-
-    .checkout-container {
-        max-width: 360px;
-        margin: 0 auto;
-        padding: 15px;
-    }
-
-    .checkout-title {
-        font-size: 22px;
-        margin-bottom: 12px;
-    }
-
-    .checkout-section {
-        margin-bottom: 15px;
-        padding: 12px;
-        border-radius: 8px;
-    }
-
-    .checkout-section h3 {
-        font-size: 18px;
-        margin-bottom: 8px;
-    }
-
-    .checkout-section label {
-        font-size: 14px;
-        margin-bottom: 4px;
-        display: block;
-    }
-
-    .checkout-section input,
-    .checkout-section select {
-        width: 100%;
-        padding: 10px;
-        font-size: 14px;
-        border-radius: 6px;
-    }
-
-    .order-summary {
-        font-size: 15px;
-    }
-
-    .order-summary .summary-item {
-        margin-bottom: 8px;
-    }
-
-    .checkout-total {
-        font-size: 18px;
-        margin-top: 10px;
-        font-weight: bold;
-    }
-
-    .place-order-btn {
-        width: 100%;
-        padding: 13px;
-        font-size: 16px;
-        border-radius: 8px;
-        margin-top: 15px;
-    }
+    /* ====== CHECKOUT BASE STYLE (Laptop normal) ====== */
+.checkout-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 40px 20px;
 }
+
+.shipping-info, 
+.order-summary {
+  background: #111;
+  border: 1px solid #222;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.shipping-info {
+  flex: 2;
+}
+
+.order-summary {
+  flex: 1;
+}
+
+
+
+@media (max-width: 600px) {
+
+  .checkout-wrapper {
+    flex-direction: column-reverse;  /* ORDER SUMMARY di atas */
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .shipping-info,
+  .order-summary {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .order-summary h2,
+  .shipping-info h2 {
+    font-size: 20px;
+  }
+
+  input, select {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  button {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .shipping-info {
+    padding: 14px;
+    box-sizing: border-box;    /* BIAR WIDTH NGIKUT BOX */
+  }
+
+  .shipping-info input,
+  .shipping-info textarea {
+    width: 100%;
+    max-width: 100%;           /* ANTI MELEBAR */
+    box-sizing: border-box;    /* WAJIB */
+    padding: 9px;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+}
+
 
   </style>
 </head>
@@ -198,10 +213,9 @@
 </header>
 
 
-<div class="checkout-container">
+<div class="checkout-wrapper">
 
-  <!-- LEFT SIDE: FORM -->
-  <div class="section-box">
+  <div class="shipping-info">
     <h2>Shipping Info</h2>
 
     <input id="name" type="text" placeholder="Full Name">
@@ -211,8 +225,7 @@
     <button class="place-order" onclick="placeOrder()">Place Order</button>
   </div>
 
-  <!-- RIGHT SIDE: SUMMARY -->
-  <div class="section-box">
+  <div class="order-summary">
     <h2>Order Summary</h2>
 
     <div id="summary"></div>
@@ -221,6 +234,7 @@
       Total: <span id="totalPrice">Rp 0</span>
     </div>
   </div>
+
 </div>
 
 <script>
